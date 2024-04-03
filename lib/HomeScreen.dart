@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           image: const DecorationImage(
-                            image: AssetImage("assets/profile.jpg"),
+                            image: AssetImage("assets/images/profile.png"),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -114,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                         decoration:  BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           image: const DecorationImage(
-                            image: AssetImage("assets/couple.png"),
+                            image: AssetImage("assets/images/marriage_contract.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                         decoration:  BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           image: const DecorationImage(
-                            image: AssetImage("assets/lawyer.png"),
+                            image: AssetImage("assets/images/lawyer.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -203,6 +203,25 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Center(
+                child: SizedBox(
+                  width: 200, // specify the desired width
+                  height: 100, // specify the desired height
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/PaymentScreen');
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    child: Text(
+                      'Centered Widget',
+                      style: TextStyle(fontSize: 20), // increase font size if needed
+                    ),
+                  ),
+                ),
+              )
+,
             ],
           ),
         ),

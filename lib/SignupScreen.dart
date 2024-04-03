@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+import 'DatabaseHelper.dart';
 
-  @override
+class SignupScreen extends StatelessWidget {
+   SignupScreen({super.key});
+
+
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+   final TextEditingController usernameController = new TextEditingController();
+   final TextEditingController nameController = new TextEditingController();
+   final TextEditingController contactController = new TextEditingController();
+
+
+
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -50,6 +61,7 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: nameController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'Name',
@@ -61,6 +73,7 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: usernameController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'User Name',
@@ -72,6 +85,7 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: emailController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'Email',
@@ -83,6 +97,7 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: passwordController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'Password',
@@ -94,6 +109,7 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: contactController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'Phone Number',
@@ -141,6 +157,25 @@ class SignupScreen extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: () {
+                            registerUser(usernameController.text, passwordController.text ,nameController.text, emailController.text,contactController.text);
+
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('User  Register'),
+                                  content: Text('User has been Register'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                             Navigator.of(context).pushNamed('/LoginScreen');
                           },
                           child: const Text(
@@ -158,4 +193,24 @@ class SignupScreen extends StatelessWidget {
           ),
         ));
   }
+
+  void registerUser(String username, String password,String name,String email,String contact) async {
+    int id = await DatabaseHelper.instance.insertUser({
+      DatabaseHelper.columnName: username,
+      DatabaseHelper.columnPassword: password,
+      DatabaseHelper.Name:name,
+      DatabaseHelper.columnemail :email,
+      DatabaseHelper.columncontact:contact ,
+    });
+    if (id != null) {
+      // Registration successful
+      print('User registered successfully');
+    } else {
+      // Registration failed
+      print('Failed to register user');
+    }
+  }
+
+
+
 }

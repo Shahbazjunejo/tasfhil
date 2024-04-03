@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+import 'DatabaseHelper.dart';
 
+class LoginScreen extends StatelessWidget {
+   LoginScreen({super.key});
+  final TextEditingController usernameController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +53,7 @@ class LoginScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: usernameController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'User Name',
@@ -61,6 +65,7 @@ class LoginScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: passwordController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           labelText: 'Password',
@@ -93,8 +98,9 @@ class LoginScreen extends StatelessWidget {
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context)
-                                    .pushNamed('/HomeScreen');
+                                Navigator.of(context).pushNamed('/HomeScreen');
+
+                                loginUser(usernameController.text, passwordController.text, context);
                               },
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: const Color(0xff1c2e4a),
@@ -141,5 +147,16 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
         ));
+  }
+  void loginUser(String username, String password,BuildContext context) async {
+    Map<String, dynamic>? user = await DatabaseHelper.instance.getUser(username);
+
+    if (user != null && user[DatabaseHelper.columnPassword] == password) {
+      // Login successful
+      Navigator.of(context).pushNamed('/HomeScreen');
+    } else {
+      // Login failed
+      print('Login failed');
+    }
   }
 }

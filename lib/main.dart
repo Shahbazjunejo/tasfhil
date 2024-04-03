@@ -3,6 +3,7 @@ import 'package:thesilappflutter/SignupScreen.dart';
 
 import 'HomeScreen.dart';
 import 'LoginScreen.dart';
+import 'PaymentScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,11 +21,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/Homescreen': (context) => HomeScreen(),
+        '/HomeScreen': (context) => HomeScreen(),
         '/LoginScreen': (context) => LoginScreen(),
         '/SignupScreen': (context) => SignupScreen(),
-
-
+        '/PaymentScreen': (context) => PaymentScreen(),
       },
       theme: ThemeData(
         // This is the theme of your application.
