@@ -125,6 +125,25 @@ class SignupScreen extends StatelessWidget {
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () {
+                                registerUser(usernameController.text, passwordController.text ,nameController.text, emailController.text,contactController.text);
+
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('User  Register'),
+                                      content: Text('User has been Register'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('OK'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                                 Navigator.of(context)
                                     .pushNamed('/LoginScreen');
                               },
@@ -157,25 +176,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: () {
-                            registerUser(usernameController.text, passwordController.text ,nameController.text, emailController.text,contactController.text);
 
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Text('User  Register'),
-                                  content: Text('User has been Register'),
-                                  actions: <Widget>[
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.of(context).pushNamed('/LoginScreen');
                           },
                           child: const Text(
