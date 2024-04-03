@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper{
@@ -42,7 +43,7 @@ Future _onCreate(Database db, int version) async {
         $Name TEXT NOT NULL,
         $columnemail TEXT NOT NULL,
         $columnPassword TEXT NOT NULL,
-        $columncontact TEXT NOT NULL,
+        $columncontact TEXT NOT NULL
       )
     ''');
 
