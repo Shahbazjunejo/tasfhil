@@ -25,6 +25,7 @@ class SignupScreen extends StatelessWidget {
         body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
+     child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -55,12 +56,14 @@ class SignupScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
+
                   child: Column(
                     children: [
                       const SizedBox(
                         height: 10,
                       ),
                       TextFormField(
+                        keyboardType: TextInputType.name,
                         controller: nameController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
@@ -73,6 +76,8 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        maxLength: 20,
+                        keyboardType: TextInputType.name,
                         controller: usernameController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
@@ -85,6 +90,8 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        maxLength: 20,
+                        keyboardType: TextInputType.emailAddress,
                         controller: emailController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
@@ -97,6 +104,8 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        maxLength: 10,
+                        keyboardType: TextInputType.visiblePassword,
                         controller: passwordController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
@@ -109,6 +118,8 @@ class SignupScreen extends StatelessWidget {
                         height: 10,
                       ),
                       TextFormField(
+                        maxLength: 14,
+                        keyboardType: TextInputType.number,
                         controller: contactController,
                         style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
@@ -192,6 +203,7 @@ class SignupScreen extends StatelessWidget {
               ),
             ],
           ),
+     ),
         ));
   }
 

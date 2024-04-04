@@ -99,6 +99,24 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 height: 80, // specify the desired height
                 child: ElevatedButton(
                   onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('PAYMENT'),
+                          content: Text('PAYMENT HAS BEEN PAID'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+
                   },   style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
                 ),

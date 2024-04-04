@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           image: const DecorationImage(
-                            image: AssetImage("assets/images/profile.png"),
+                            image: AssetImage('assets/images/profile.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -114,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                         decoration:  BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           image: const DecorationImage(
-                            image: AssetImage("assets/images/marriage_contract.png"),
+                            image: AssetImage('assets/images/contract.png'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                         decoration:  BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           image: const DecorationImage(
-                            image: AssetImage("assets/images/lawyer.png"),
+                            image: AssetImage('assets/images/lawyer.png'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -187,7 +187,7 @@ class HomeScreen extends StatelessWidget {
                         decoration:  BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           image: const DecorationImage(
-                            image: AssetImage("assets/attorney.png"),
+                            image: AssetImage('assets/images/attorney.png'),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -203,6 +203,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                width: 20,
+              ),
               Center(
                 child: SizedBox(
                   width: 200, // specify the desired width
@@ -212,10 +215,10 @@ class HomeScreen extends StatelessWidget {
                       Navigator.of(context).pushNamed('/PaymentScreen');
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
                     ),
                     child: Text(
-                      'Centered Widget',
+                      'Pay Now',
                       style: TextStyle(fontSize: 20), // increase font size if needed
                     ),
                   ),
