@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'DatabaseHelper.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    final Map<String, dynamic>? userData = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+
+  String name=  userData?[DatabaseHelper.columnName];
+    String email=  userData?[DatabaseHelper.columnemail];
+    String contact=  userData?[DatabaseHelper.columncontact];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
@@ -59,19 +68,19 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        const Column(
+                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Name", style: TextStyle(
+                            Text("Name: $name", style: TextStyle(
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),
-                            Text("Email", style: TextStyle(
+                            Text("Email: $email", style: TextStyle(
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),
-                            Text("Phone Number", style: TextStyle(
+                            Text("Phone Number:  $email", style: TextStyle(
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),

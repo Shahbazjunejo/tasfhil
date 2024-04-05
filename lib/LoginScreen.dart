@@ -155,7 +155,7 @@ class LoginScreen extends StatelessWidget {
 
     if (user != null && user[DatabaseHelper.columnPassword] == password) {
       // Login successful
-      Navigator.of(context).pushNamed('/HomeScreen');
+      Navigator.of(context).pushNamed('/HomeScreen',arguments: user);
     } else {
       showDialog(
         context: context,

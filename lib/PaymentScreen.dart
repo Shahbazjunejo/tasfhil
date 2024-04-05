@@ -48,7 +48,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       const SizedBox(
                         width: 20,
                       ),
-                       Text("2311", style: TextStyle(
+                       Text("0", style: TextStyle(
                           color: Color(0xFFFFFFFF),
                           fontSize: 18
                       ),)
