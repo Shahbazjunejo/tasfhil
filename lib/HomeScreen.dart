@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),
-                            Text("Phone Number:  $email", style: TextStyle(
+                            Text("Phone:  $contact", style: TextStyle(
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),
@@ -147,6 +147,7 @@ class HomeScreen extends StatelessWidget {
                                     actions: <Widget>[
                                       TextButton(
                                         onPressed: () {
+                                          Navigator.of(context).pop();
                                           Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
                                             'price': "1500",
                                           });
@@ -214,6 +215,7 @@ class HomeScreen extends StatelessWidget {
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () {
+                                        Navigator.of(context).pop();
                                         Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
                                           'price': "120",
                                         });
@@ -278,6 +280,7 @@ class HomeScreen extends StatelessWidget {
                                     actions: <Widget>[
                                       TextButton(
                                         onPressed: () {
+                                          Navigator.of(context).pop();
                                           Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
                                             'price': "120",
                                           });
@@ -307,7 +310,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Center(
+/*                Center(
                   child: SizedBox(
                     width: 400, // specify the desired width
                     height: 80, // specify the desired height
@@ -325,7 +328,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 )
-            ,
+            ,*/
               ],
             ),
           ),
@@ -333,5 +336,19 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
+  void registerContract(String username, String email,String name,String contact,String contracttype,String contractname ) async {
+    int id = await DatabaseHelper.instance.insertcontract({
+      DatabaseHelper.columnName: username,
+      DatabaseHelper.columnemail: email,
+      DatabaseHelper.columncontracttype:contracttype,
+      DatabaseHelper.columncontractname :contractname,
+      DatabaseHelper.columncontact:contact ,
+    });
+    if (id != null) {
+      print('User registered successfully');
+      
+    } else {
+      print('Failed to register user');
+    }
+  }
 }

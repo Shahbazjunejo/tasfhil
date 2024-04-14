@@ -8,6 +8,7 @@ import 'package:sqflite/sqflite.dart';
 class DatabaseHelper{
 static final _databaseName="tashfil";
 static final table="logintable";
+static final contracttable="contract";
 static final _databaseVersion = 1;
 static final columnId = 'id';
 static final columnName = 'username';
@@ -15,6 +16,8 @@ static final Name = 'name';
 static final columnPassword = 'password';
 static final columnemail = 'Email';
 static final columncontact = 'Contact';
+static final columncontracttype = 'contracttype';
+static final columncontractname = 'Contractname';
 
 DatabaseHelper._privateConstructor();
 static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -47,7 +50,16 @@ Future _onCreate(Database db, int version) async {
       )
     ''');
 
-
+  await db.execute('''
+      CREATE TABLE  IF NOT EXISTS $contracttable (
+        $columnId INTEGER PRIMARY KEY,
+        $columnName TEXT NOT NULL,
+        $columnemail TEXT NOT NULL,
+        $columncontracttype TEXT NOT NULL,
+        $columncontractname TEXT NOT NULL,
+        $columncontact TEXT NOT NULL
+      )
+    ''');
 
 
 
@@ -56,6 +68,11 @@ Future _onCreate(Database db, int version) async {
 }
 
 Future<int> insertUser(Map<String, dynamic> row) async {
+  Database? db = await instance.database;
+  return await db?.insert(table, row)??0;
+}
+
+Future<int> insertcontract(Map<String, dynamic> row) async {
   Database? db = await instance.database;
   return await db?.insert(table, row)??0;
 }

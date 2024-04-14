@@ -21,6 +21,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     if (args != null) {
 
        price = args['price'];
+       _cvcController.text=price;
 
     }
     return Scaffold(
@@ -100,6 +101,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               TextFormField(
                 controller: _cvcController,
                 keyboardType: TextInputType.number,
+
               ),
               SizedBox(height: 32),
               const SizedBox(
