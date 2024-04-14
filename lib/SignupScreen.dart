@@ -30,7 +30,7 @@ class SignupScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 70,
+                height: 20,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * (1 / 9),
@@ -62,20 +62,26 @@ class SignupScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      TextFormField(
-                        keyboardType: TextInputType.name,
-                        controller: nameController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: const InputDecoration(
-                          labelText: 'Name',
-                          labelStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
+                     SizedBox(
+                       height: 50,
+                       width: 300,
+                       child:  TextFormField(
+                         keyboardType: TextInputType.name,
+                         controller: nameController,
+                         style: const TextStyle(color: Colors.white),
+                         decoration: const InputDecoration(
+                           labelText: 'Name',
+                           labelStyle: TextStyle(color: Colors.white),
+                           border: OutlineInputBorder(),
+                         ),
+                       ),
+
+                     ),
+
+                  SizedBox(
+                    height: 50,
+                    width: 300,
+                    child:  TextFormField(
                         maxLength: 20,
                         keyboardType: TextInputType.name,
                         controller: usernameController,
@@ -86,9 +92,8 @@ class SignupScreen extends StatelessWidget {
                           border: OutlineInputBorder(),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+
+                  ),
                       TextFormField(
                         maxLength: 20,
                         keyboardType: TextInputType.emailAddress,
@@ -100,9 +105,6 @@ class SignupScreen extends StatelessWidget {
                           border: OutlineInputBorder(),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
                       TextFormField(
                         maxLength: 10,
                         keyboardType: TextInputType.visiblePassword,
@@ -113,9 +115,6 @@ class SignupScreen extends StatelessWidget {
                           labelStyle: TextStyle(color: Colors.white),
                           border: OutlineInputBorder(),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
                       ),
                       TextFormField(
                         maxLength: 14,

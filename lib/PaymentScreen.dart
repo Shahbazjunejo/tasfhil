@@ -11,8 +11,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
   final _expiryController = TextEditingController();
   final _cvcController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
+
+    final Map<String, dynamic>? args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    String price="0";
+
+    if (args != null) {
+
+       price = args['price'];
+
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Payment Screen'),
@@ -48,7 +58,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       const SizedBox(
                         width: 20,
                       ),
-                       Text("0", style: TextStyle(
+                       Text(price, style: TextStyle(
                           color: Color(0xFFFFFFFF),
                           fontSize: 18
                       ),)

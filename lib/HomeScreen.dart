@@ -27,9 +27,11 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(5.0),
           child: SingleChildScrollView(
             child: Column(
+
+
               children: [
                 SizedBox(
-                  height: 100,
+                  height: 70,
                   width: MediaQuery.of(context).size.width - 80,
                   child: TextField(
                     style: const TextStyle(
@@ -59,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   height: 200,
-                  width: MediaQuery.of(context).size.width - 80,
+                  width: MediaQuery.of(context).size.width-30 ,
                   decoration:  BoxDecoration(
                     color: const Color(0xff1c2e4a),
                     borderRadius: BorderRadius.circular(20),
@@ -87,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          width: 60,
+                          width: 10,
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * (1/3),
@@ -96,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             image: const DecorationImage(
                               image: AssetImage('assets/images/profile.png'),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fitHeight,
                             ),
                           ),
                         )
@@ -105,10 +107,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 10,
                 ),
                 Container(
-                  height: 120,
+                  height: 80,
                   width: MediaQuery.of(context).size.width - 80,
                   decoration:  BoxDecoration(
                     color: const Color(0xff1c2e4a),
@@ -130,22 +132,52 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          width: 20,
+                          width: 10,
                         ),
-                        const Text("Marrige Contracts", style: TextStyle(
-                            color: Color(0xffffad03),
-                            fontSize: 18
-                        ),)
+
+                        ElevatedButton(
+                            onPressed: () {
+                              // Your onPressed function logic here
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text('Marrige Contracts'),
+                                    content: Text('Marrige Contracts  has been Register with the $name and $email and contact $contact with payment of 1500'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
+                                            'price': "1500",
+                                          });
+                                        },
+                                        child: Text('OK'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color
+                            ),
+                            child:   const Text("Marrige Contracts", style: TextStyle(
+                                color: Color(0xffffad03),
+                                fontSize: 12
+                            ),)
+                        ),
+
+
                       ],
                     ),
                   ),
                 ),
             
                 const SizedBox(
-                  height: 40,
+                  height: 10,
                 ),
                 Container(
-                  height: 120,
+                  height: 80,
                   width: MediaQuery.of(context).size.width - 80,
                   decoration:  BoxDecoration(
                     color: const Color(0xff1c2e4a),
@@ -169,19 +201,49 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(
                           width: 20,
                         ),
-                        const Text("Divorces", style: TextStyle(
-                            color: Color(0xffffad03),
-                            fontSize: 18
-                        ),)
+
+                        ElevatedButton(
+                          onPressed: () {
+                            // Your onPressed function logic here
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Divorce Contract'),
+                                  content: Text('Divorce Contract  has been Register with the $name and $email and contact $contact with payment of 120'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
+                                          'price': "120",
+                                        });
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color
+                            ),
+                          child: const Text("Divorces", style: TextStyle(
+                              color: Color(0xffffad03),
+                              fontSize: 12
+                          ),)
+                        ),
+
+
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 10,
                 ),
                 Container(
-                  height: 120,
+                  height: 80,
                   width: MediaQuery.of(context).size.width - 80,
                   decoration:  BoxDecoration(
                     color: const Color(0xff1c2e4a),
@@ -203,26 +265,55 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          width: 20,
+                          width: 10,
                         ),
-                        const Text("Power of Attorney", style: TextStyle(
-                            color: Color(0xffffad03),
-                            fontSize: 18
-                        ),)
+                        ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text('Power of Attorney'),
+                                    content: Text('Power of Attorney  has been Register with the $name and $email and contact $contact with payment of 120'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
+                                            'price': "120",
+                                          });
+                                        },
+                                        child: Text('OK'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color
+                            ),
+                            child:  const Text("Power of Attorney", style: TextStyle(
+                                color: Color(0xffffad03),
+                                fontSize: 12
+                            ),)
+                        ),
+
+
+
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(
-                  width: 20,
+                  height: 20,
                 ),
                 Center(
                   child: SizedBox(
-                    width: 200, // specify the desired width
-                    height: 100, // specify the desired height
+                    width: 400, // specify the desired width
+                    height: 80, // specify the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/PaymentScreen');
+
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
@@ -242,4 +333,5 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
 }
