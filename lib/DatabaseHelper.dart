@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:sqflite/sqflite.dart';
+import 'package:thesilappflutter/RegisterUser.dart';
 
 class DatabaseHelper{
 static final _databaseName="tashfil";
@@ -82,6 +83,24 @@ Future<Map<String, dynamic>?> getUser(String username) async {
   List<Map<String, dynamic>> result = await db?.query(table,
       where: '$columnName = ?', whereArgs: [username])??[];
   return result.isNotEmpty ? result.first : null;
+}
+
+/*Future<Map<String, dynamic>?> getallUser() async {
+  Database? db = await instance.database;
+  List<Map<String, dynamic>> result = await db?.query(table,)??[];
+  return result.isNotEmpty ? result.first : null;
+}*/
+
+Future<List<UserData>> getallUser() async {
+  final Database? db = await database;
+  final List<Map<String, dynamic>>? maps = await db?.query('logintable');
+  return List.generate(maps!.length, (i) {
+    return  UserData(
+      name: maps[i]['username'] ?? '',
+      contact: maps[i]['Contact'] ?? '',
+      email: maps[i]['Email'] ?? '',
+    );
+  });
 }
 
 
