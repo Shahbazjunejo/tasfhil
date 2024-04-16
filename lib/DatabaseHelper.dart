@@ -85,6 +85,14 @@ Future<Map<String, dynamic>?> getUser(String username) async {
   return result.isNotEmpty ? result.first : null;
 }
 
+
+Future<Map<String, dynamic>?> deleteUser(String id) async {
+  Database? db = await instance.database;
+ await db?.delete(table,
+      where: '$columncontact = ?', whereArgs: [id])??[];
+
+}
+
 /*Future<Map<String, dynamic>?> getallUser() async {
   Database? db = await instance.database;
   List<Map<String, dynamic>> result = await db?.query(table,)??[];

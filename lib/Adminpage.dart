@@ -40,6 +40,7 @@ class Adminpage extends StatelessWidget{
                     ElevatedButton(
                         onPressed: () {
                           // Your onPressed function logic here
+                          Navigator.of(context).pushNamed('/RegisterUser');
 
                         },
                         style: ButtonStyle(
@@ -99,7 +100,7 @@ class Adminpage extends StatelessWidget{
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
-                                      Navigator.of(context).pushNamed('/RegisterUser');
+
                                     },
                                     child: Text('OK'),
                                   ),
