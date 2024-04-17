@@ -37,36 +37,37 @@ class _PaymentScreenState extends State<PaymentScreen> {
               const SizedBox(
                 height: 40,
               ),
-              Container(
-                height: 120,
-                width: MediaQuery.of(context).size.width - 80,
-                decoration:  BoxDecoration(
-                  color: const Color(0xff1c2e4a),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text("Total Price", textAlign: TextAlign.start,
-                        style: TextStyle(
+                 Container(
+                  height: 120,
+                  width: MediaQuery.of(context).size.width - 80,
+                  decoration:  BoxDecoration(
+                    color: const Color(0xff1c2e4a),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text("Total Price", textAlign: TextAlign.start,
+                          style: TextStyle(
+                              color: Color(0xFFFFFFFF),
+                            fontSize: 18
+                        ),
+
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                         Text(price, style: TextStyle(
                             color: Color(0xFFFFFFFF),
-                          fontSize: 18
-                      ),
-          
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                       Text(price, style: TextStyle(
-                          color: Color(0xFFFFFFFF),
-                          fontSize: 18
-                      ),)
-                    ],
+                            fontSize: 18
+                        ),)
+                      ],
+                    ),
                   ),
                 ),
-              ),
+
               Container(
                 height: 80,
                 width: 850,
@@ -80,11 +81,21 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 'Credit Card Number',
                 style: TextStyle(fontSize: 16),
               ),
-              TextFormField(
-                controller: _cardController,
-                keyboardType: TextInputType.number,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.credit_card,
+                    size: 50, // Adjust size as needed
+                    color: Colors.blue, // Adjust color as needed
+                  ),
+                  TextFormField(
+                    controller: _cardController,
+                    keyboardType: TextInputType.number,
+                  ),
+                ],
               ),
-              SizedBox(height: 16),
+
               Text(
                 'Card Holder Name',
                 style: TextStyle(fontSize: 16),
