@@ -85,11 +85,11 @@ class ItemWidget extends StatelessWidget {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              Text(item.name),
               Text('Name: ${item.name}'),
               Text('Contact: ${item.contact}'),
               Text('Email: ${item.email}'),
+              Text('Contract name: ${item.contractname}')  ,
+              Text('Contract Type: ${item.contracttype}')  ,
 
             ],
           ),
