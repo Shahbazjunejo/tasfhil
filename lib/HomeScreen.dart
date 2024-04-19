@@ -78,10 +78,12 @@ class HomeScreen extends StatelessWidget {
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),
+
                             Text("Email: $email", style: TextStyle(
                                 color: Color(0xffffad03),
                                 fontSize: 18
                             ),),
+
                             Text("Phone:  $contact", style: TextStyle(
                                 color: Color(0xffffad03),
                                 fontSize: 18
@@ -148,6 +150,7 @@ class HomeScreen extends StatelessWidget {
                                       TextButton(
                                         onPressed: () {
                                           Navigator.of(context).pop();
+                                          registerContract(name, email, contact,'M','Marrige Contracts' );
                                           Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
                                             'price': "1500",
                                           });
@@ -281,6 +284,7 @@ class HomeScreen extends StatelessWidget {
                                       TextButton(
                                         onPressed: () {
                                           Navigator.of(context).pop();
+                                          registerContract(name, email, contact,'P','Power of Attorney' );
                                           Navigator.of(context).pushNamed('/PaymentScreen',arguments: {
                                             'price': "120",
                                           });
@@ -336,7 +340,8 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-  void registerContract(String username, String email,String name,String contact,String contracttype,String contractname ) async {
+
+  void registerContract(String username, String email,String contact,String contracttype,String contractname ) async {
     int id = await DatabaseHelper.instance.insertcontract({
       DatabaseHelper.columnName: username,
       DatabaseHelper.columnemail: email,
@@ -351,4 +356,6 @@ class HomeScreen extends StatelessWidget {
       print('Failed to register user');
     }
   }
+
+
 }

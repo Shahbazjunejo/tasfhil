@@ -4,13 +4,14 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:sqflite/sqflite.dart';
+import 'package:thesilappflutter/ContractSaved.dart';
 import 'package:thesilappflutter/RegisterUser.dart';
 
 class DatabaseHelper{
 static final _databaseName="tashfil";
 static final table="logintable";
 static final contracttable="contract";
-static final _databaseVersion = 1;
+static final _databaseVersion = 2;
 static final columnId = 'id';
 static final columnName = 'username';
 static final Name = 'name';
@@ -61,11 +62,6 @@ Future _onCreate(Database db, int version) async {
         $columncontact TEXT NOT NULL
       )
     ''');
-
-
-
-
-
 }
 
 Future<int> insertUser(Map<String, dynamic> row) async {
@@ -75,7 +71,7 @@ Future<int> insertUser(Map<String, dynamic> row) async {
 
 Future<int> insertcontract(Map<String, dynamic> row) async {
   Database? db = await instance.database;
-  return await db?.insert(table, row)??0;
+  return await db?.insert(contracttable, row)??0;
 }
 
 Future<Map<String, dynamic>?> getUser(String username) async {
@@ -93,11 +89,38 @@ Future<Map<String, dynamic>?> deleteUser(String id) async {
 
 }
 
+
+
+Future<void> updateLoginRecord(String username,String email, String contact) async {
+  Database? db = await instance.database;
+  await db?.update(
+      table,
+      {columnName: username, columncontact: contact, columnemail: email},
+      where: '$columncontact = ?',
+      whereArgs: [contact]
+  );
+}
+
 /*Future<Map<String, dynamic>?> getallUser() async {
   Database? db = await instance.database;
   List<Map<String, dynamic>> result = await db?.query(table,)??[];
   return result.isNotEmpty ? result.first : null;
 }*/
+
+  Future<List<ContractData>> getDataFromDatabase() async {
+    final Database? db = await database;
+    final List<Map<String, dynamic>>? maps = await db?.query(contracttable);
+    return List.generate(maps!.length, (i) {
+      return ContractData(
+        name: maps[i][columnName] ?? '',
+          email: maps[i][columnemail] ?? '',
+          contracttype: maps[i][columncontracttype] ?? '',
+        contractname: maps[i][columncontractname] ?? '',
+        contact: maps[i][columncontact] ?? '',
+      );
+    });
+  }
+
 
 Future<List<UserData>> getallUser() async {
   final Database? db = await database;

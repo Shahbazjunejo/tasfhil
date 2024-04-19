@@ -130,6 +130,7 @@ class _DatabaseListViewState extends State<RegisterUser> {
 
 
 }
+
 class ItemWidget extends StatelessWidget {
   final  UserData item;
   final void Function() onTap;
@@ -140,40 +141,39 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: Text(item.name),
-        subtitle: Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(item.name),
             Text(' Name: ${item.name}'),
             Text('Contact: ${item.contact}'),
             Text('Email: ${item.email}'),
           ],
         ),
-        trailing:Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+
+        trailing:Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
               icon: Icon(Icons.delete),
               onPressed: () async {
+
                 onTap();
-          await DatabaseHelper.instance.deleteUser(item.contact);
+                await DatabaseHelper.instance.deleteUser(item.contact);
 
               },
             ),
             IconButton(
               icon: Icon(Icons.update),
               onPressed: () async {
-          update();
+                update();
 
               },
             ),
 
 
-
-
-
           ],
-
         )
 
 

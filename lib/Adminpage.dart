@@ -89,25 +89,7 @@ class Adminpage extends StatelessWidget{
 
                     ElevatedButton(
                         onPressed: () {
-                          // Your onPressed function logic here
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Divorce Contract'),
-                                content: Text('Divorce Contra'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-
-                                    },
-                                    child: Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+                          Navigator.of(context).pushNamed('/ContractSaved');
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color
