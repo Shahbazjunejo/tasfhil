@@ -94,37 +94,58 @@ class SignupScreen extends StatelessWidget {
                       ),
 
                   ),
-                      TextFormField(
-                        maxLength: 20,
-                        keyboardType: TextInputType.emailAddress,
-                        controller: emailController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: const InputDecoration(
-                          labelText: 'Email',
-                          labelStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(),
+                      SizedBox(
+                        height: 50,
+                        width: 300,
+                        child: TextFormField(
+                          maxLength: 20,
+                          keyboardType: TextInputType.emailAddress,
+                          controller: emailController,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            labelText: 'Email',
+                            labelStyle: TextStyle(color: Colors.white),
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your credit card number';
+                            }
+                            if (!isValidCreditCard(value)) {
+                              return 'Please enter a valid credit card number';
+                            }
+                            return null;
+                          },
                         ),
                       ),
-                      TextFormField(
-                        maxLength: 10,
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: passwordController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: const InputDecoration(
-                          labelText: 'Password',
-                          labelStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(),
+                      SizedBox(
+                        height: 50,
+                        width: 300,
+                        child: TextFormField(
+                          maxLength: 10,
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: passwordController,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.white),
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ),
-                      TextFormField(
-                        maxLength: 14,
-                        keyboardType: TextInputType.number,
-                        controller: contactController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: const InputDecoration(
-                          labelText: 'Phone Number',
-                          labelStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(),
+                      SizedBox(
+                        height: 50,
+                        width: 300,
+                        child: TextFormField(
+                          maxLength: 14,
+                          keyboardType: TextInputType.number,
+                          controller: contactController,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            labelText: 'Phone Number',
+                            labelStyle: TextStyle(color: Colors.white),
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -136,7 +157,6 @@ class SignupScreen extends StatelessWidget {
                             child: ElevatedButton(
                               onPressed: () {
                                 registerUser(usernameController.text, passwordController.text ,nameController.text, emailController.text,contactController.text);
-
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -205,6 +225,17 @@ class SignupScreen extends StatelessWidget {
      ),
         ));
   }
+
+   bool isValidCreditCard(String input) {
+     // Remove any non-digit characters
+     input = input.replaceAll(RegExp(r'\D+'), '');
+
+     // Perform additional validation checks
+     // For example, you can use the Luhn algorithm to validate credit card numbers
+
+     // For demonstration purposes, this function only checks if the input length is between 13 and 19 characters
+     return input.length >= 13 && input.length <= 19;
+   }
 
   void registerUser(String username, String password,String name,String email,String contact) async {
     int id = await DatabaseHelper.instance.insertUser({

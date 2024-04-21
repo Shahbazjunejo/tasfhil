@@ -81,20 +81,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 'Credit Card Number',
                 style: TextStyle(fontSize: 16),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.credit_card,
-                    size: 50, // Adjust size as needed
-                    color: Colors.blue, // Adjust color as needed
-                  ),
+
                   TextFormField(
                     controller: _cardController,
                     keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.credit_card),
+                      hintText: 'xx-xxxxxxxx-xx',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
                   ),
-                ],
-              ),
+
 
               Text(
                 'Card Holder Name',
@@ -103,6 +102,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
               TextFormField(
                 controller: _expiryController,
                 keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  hintText: 'Card User Name',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
               ),
               SizedBox(height: 16),
               Text(
@@ -110,9 +116,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 style: TextStyle(fontSize: 16),
               ),
               TextFormField(
+
                 controller: _cvcController,
                 keyboardType: TextInputType.number,
-
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.money),
+                  hintText: '00',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter value';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 32),
               const SizedBox(
@@ -135,6 +154,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
+                                  _cardController.clear();
+                                  _cvcController.clear();
+                                  _expiryController.clear();
+                                  Navigator.of(context).pushNamed('/HomeScreen');
                                 },
                                 child: Text('OK'),
                               ),
