@@ -7,10 +7,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final Map<String, dynamic>? userData = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
 
-  String name=  userData?[DatabaseHelper.columnName];
+    String name=  userData?[DatabaseHelper.columnName];
     String email=  userData?[DatabaseHelper.columnemail];
     String contact=  userData?[DatabaseHelper.columncontact];
 
@@ -27,8 +26,6 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(5.0),
           child: SingleChildScrollView(
             child: Column(
-
-
               children: [
                 SizedBox(
                   height: 70,
