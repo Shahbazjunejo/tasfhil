@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thesilappflutter/Adminpage.dart';
 import 'package:thesilappflutter/ContractSaved.dart';
+import 'package:thesilappflutter/InformationUser.dart';
 import 'package:thesilappflutter/RegisterUser.dart';
 import 'package:thesilappflutter/SignupScreen.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/Adminpage': (context) => Adminpage(),
         '/RegisterUser': (context) => RegisterUser(),
         '/ContractSaved': (context) => ContractSaved(),
+        '/InformationUser': (context) => InformationUser(),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
