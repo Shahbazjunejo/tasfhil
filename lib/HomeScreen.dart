@@ -140,7 +140,12 @@ class HomeScreen extends StatelessWidget {
                         ElevatedButton(
                             onPressed: () {
                               // Your onPressed function logic here
-                              showDialog(
+
+                              Navigator.of(context).pushNamed('/InformationUser',arguments: {
+                                'contract': "Marrige Contracts",'price':"1500",
+                              });
+
+/*                              showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
@@ -160,7 +165,7 @@ class HomeScreen extends StatelessWidget {
                                     ],
                                   );
                                 },
-                              );
+                              );*/
                             },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color
@@ -208,8 +213,12 @@ class HomeScreen extends StatelessWidget {
 
                         ElevatedButton(
                           onPressed: () {
+                            Navigator.of(context).pushNamed('/InformationUser',arguments: {
+                              'contract': "Divorce Contract",'price':"1500",
+                            });
                             // Your onPressed function logic here
-                            showDialog(
+                            //Navigator.of(context).pushNamed('/InformationUser');
+/*                            showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
@@ -228,7 +237,7 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 );
                               },
-                            );
+                            );*/
                           },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color
@@ -274,7 +283,11 @@ class HomeScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              showDialog(
+
+                              Navigator.of(context).pushNamed('/InformationUser',arguments: {
+                                'contract': "Power of Attorney",'price':"120",
+                              });
+/*                              showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
@@ -294,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                                     ],
                                   );
                                 },
-                              );
+                              );*/
                             },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff1c2e4a)), // Set background color

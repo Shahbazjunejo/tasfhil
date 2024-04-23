@@ -34,7 +34,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-
+  intl: ^0.18.1
   cupertino_icons: ^1.0.2
   sqflite: ^2.0.0+3
   path_provider: ^2.0.2
@@ -64,6 +64,7 @@ flutter:
     - assets/images/lawyer.png
     - assets/images/divorce.png
     - assets/images/attorney.png
+    - assets/images/background.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
