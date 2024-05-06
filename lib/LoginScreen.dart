@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'DatabaseHelper.dart';
-
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login',
-      home: loginform(),
-    );
-  }
-}
-class loginform extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
   LoginScreenstate createState() => LoginScreenstate();
 }
-class LoginScreenstate extends State<loginform> {
+class LoginScreenstate extends State<LoginScreen> {
   final TextEditingController usernameController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();

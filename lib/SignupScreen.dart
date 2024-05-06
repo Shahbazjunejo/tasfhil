@@ -2,29 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'DatabaseHelper.dart';
 
-
-
-class SignupScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sign up',
-      home:  Signupform(),
-    );
-  }
-}
-class Signupform extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
   SignupScreenstate createState() => SignupScreenstate();
 }
 
-
-
-
-
-class SignupScreenstate extends State<Signupform> {
-
-
+class SignupScreenstate extends State<SignupScreen> {
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
    final TextEditingController usernameController = new TextEditingController();
